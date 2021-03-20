@@ -1,4 +1,4 @@
-const { Student, Campus } = require('./Index');
+const { Student, Campus } = require('./associations');
 const db = require('./db');
 const faker = require('faker');
 

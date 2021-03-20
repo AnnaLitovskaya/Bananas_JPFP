@@ -1,7 +1,6 @@
-const express = require('express');
-const app = express();
+const app = require('./server');
 const db = require('./db/db');
-const syncAndSeed = require('./db/Seed');
+const syncAndSeed = require('./db/seed');
 
 const run = async () => {
   try {
@@ -15,3 +14,5 @@ const run = async () => {
 };
 
 run();
+
+module.exports = app;

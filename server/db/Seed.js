@@ -5,6 +5,8 @@ const faker = require('faker');
 const syncAndSeed = async () => {
   try {
     await db.sync({ force: true });
+
+    // Generating school data
     let schools = Array(6).fill('');
     schools = schools.map((spot) => {
       return {
@@ -20,6 +22,8 @@ const syncAndSeed = async () => {
         description: school.description,
       });
     });
+
+    //Generating student data
     let students = Array(20).fill('');
     students = students.map((student) => {
       return {
@@ -35,7 +39,9 @@ const syncAndSeed = async () => {
         lastName: student.lastName,
         email: student.email,
         gpa: student.gpa,
-        CampusId: Math.floor(Math.random() * schools.length + 1),
+        CampusId: schools.length
+          ? Math.floor(Math.random() * schools.length + 1)
+          : null,
       });
     });
   } catch (ex) {

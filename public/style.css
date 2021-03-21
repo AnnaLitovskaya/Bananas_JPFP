@@ -1,4 +1,75 @@
+body {
+  margin: 1rem;
+}
+
 nav {
   display: flex;
   justify-content: space-around;
+}
+
+.emptyPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-left: 6%;
+  margin-right: 6%;
+}
+
+/* ALL CAMPUSES PAGE */
+#campusListing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.campusTab {
+  width: 400px;
+  height: 225px;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border: black solid 1px;
+  margin-bottom: 1rem;
+}
+
+.campusTab > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 1rem;
+  justify-content: space-between;
+}
+
+.campusTab div p:first-child {
+  font-size: 1.5rem;
+}
+
+.campusTab > div div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* ALL STUDENTS PAGE */
+#studentListing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.studentTab {
+  width: 225px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: black solid 1px;
+  margin-bottom: 1rem;
+  align-items: center;
 }

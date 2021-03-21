@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getStudents } from '../store/thunks';
+import { getStudents } from '../../store/thunks';
 import StudentTab from './StudentTab.jsx';
 
 class AllStudents extends Component {
@@ -9,16 +9,22 @@ class AllStudents extends Component {
   }
   render() {
     const students = this.props.students;
-    if (!students) {
-      return <h1>...loading</h1>;
+    if (students.length === 0) {
+      return (
+        <div className="emptyPage">
+          <h1>All Students</h1>
+          <h3>There are no students registered in the database.</h3>
+          <button>Add Student</button>
+        </div>
+      );
     } else {
       return (
         <div>
-          <div>
+          <div className="listHeader">
             <h1>All Students</h1>
             <button>Add Student</button>
           </div>
-          <div>
+          <div id="studentListing">
             {students.map((student) => {
               return (
                 <div key={student.id}>

@@ -20,7 +20,11 @@ class AllCampuses extends Component {
           </div>
           <div>
             {campuses.map((campus) => {
-              return <CampusTab tab={campus} />;
+              return (
+                <div key={campus.id}>
+                  <CampusTab tab={campus} />
+                </div>
+              );
             })}
           </div>
         </div>

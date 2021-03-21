@@ -12,7 +12,7 @@ class Main extends Component {
         <Switch>
           <Route path="/" exact />
           <Route path="/campuses" component={AllCampuses} />
-          {/* <Route component={AllStudents} path="/students" /> */}
+          <Route path="/students" component={AllStudents} />
         </Switch>
       </Router>
     );

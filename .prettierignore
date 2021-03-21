@@ -1,1 +1,2 @@
-client/components/CampusTab.jsx
+server/db/Student.js
+server/db/Campus.js

@@ -4,9 +4,8 @@ const faker = require('faker');
 
 const syncAndSeed = async () => {
   try {
-    // Generates an array with 20 schools
     await db.sync({ force: true });
-    let schools = Array(20).fill('');
+    let schools = Array(6).fill('');
     schools = schools.map((spot) => {
       return {
         name: `${faker.address.city()} University`,
@@ -21,8 +20,7 @@ const syncAndSeed = async () => {
         description: school.description,
       });
     });
-    //Generates an array with 1000 students
-    let students = Array(1000).fill('');
+    let students = Array(20).fill('');
     students = students.map((student) => {
       return {
         firstName: faker.name.firstName(),

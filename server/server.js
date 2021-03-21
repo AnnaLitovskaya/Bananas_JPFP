@@ -1,16 +1,15 @@
 const express = require('express');
 const app = express();
-const { Student, Campus } = require('./db/associations');
+const path = require('path');
 const router = require('./api/router');
 
 app.use('/api', router);
 
 app.get('/', (req, res, next) => {
-  try {
-    res.send('Hello World!!!');
-  } catch (ex) {
-    next(ex);
-  }
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
+
+app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use('/dist', express.static(path.join(__dirname, '..', 'dist')));
 
 module.exports = app;

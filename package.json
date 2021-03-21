@@ -4,9 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node port.js",
-    "start:dev": "nodemon server/port.js"
+    "start:dev": "npm run build:dev & nodemon server/port.js --ignore dist/ --client/",
+    "build": "webpack",
+    "build:dev": "npm run build -- --watch --mode=development"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,16 @@
     "sequelize": "^6.5.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
     "faker": "^5.4.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "webpack": "^5.27.1",
+    "webpack-cli": "^4.5.0"
   }
 }

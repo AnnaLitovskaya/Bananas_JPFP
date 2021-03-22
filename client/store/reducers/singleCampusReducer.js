@@ -1,4 +1,4 @@
-import { SINGLE_CAMPUS } from '../singleCampus';
+import { SINGLE_CAMPUS } from '../storeComponents/singleCampus';
 
 const singleCampusReducer = (state = {}, action) => {
   switch (action.type) {

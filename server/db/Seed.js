@@ -12,6 +12,7 @@ const syncAndSeed = async () => {
       return {
         name: `${faker.address.city()} University`,
         address: faker.address.streetAddress(),
+        addressExtended: `${faker.address.city()}, ${faker.address.state()} ${faker.address.zipCode()}`,
         description: faker.lorem.paragraphs(5),
       };
     });
@@ -19,6 +20,7 @@ const syncAndSeed = async () => {
       Campus.create({
         name: school.name,
         address: school.address,
+        addressExtended: school.addressExtended,
         description: school.description,
       });
     });

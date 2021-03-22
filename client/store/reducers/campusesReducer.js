@@ -1,4 +1,4 @@
-import { GET_CAMPUSES } from '../getCampuses';
+import { GET_CAMPUSES } from '../storeComponents/getCampuses';
 
 const campusesReducer = (state = [], action) => {
   switch (action.type) {

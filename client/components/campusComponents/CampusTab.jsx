@@ -12,7 +12,7 @@ const CampusTab = (props) => {
           </p>
           <p>{props.tab.Students.length} students</p>
           <div>
-            <Link to={`/campuses/${props.tab.id}`}>Edit</Link>
+            <button>Edit</button>
             <button>Delete</button>
           </div>
         </div>

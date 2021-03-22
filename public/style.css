@@ -73,3 +73,27 @@ nav {
   margin-bottom: 1rem;
   align-items: center;
 }
+
+/* SINGLE STUDENT PAGE */
+#singleCampus {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-right: auto;
+  margin-left: auto;
+  border: black 1px solid;
+}
+
+#singleCampus div {
+  margin: 1rem;
+}
+
+#singleCampus div:first-child {
+  align-self: center;
+}
+
+#singleCampus div div {
+  display: flex;
+  justify-content: flex-end;
+}

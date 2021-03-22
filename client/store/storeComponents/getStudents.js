@@ -4,8 +4,12 @@ const GET_STUDENTS = 'GET_STUDENTS';
 
 const getStudents = () => {
   return async (dispatch) => {
-    const students = (await axios.get('/api/students')).data;
-    dispatch(_getStudents(students));
+    try {
+      const students = (await axios.get('/api/students')).data;
+      dispatch(_getStudents(students));
+    } catch (ex) {
+      console.log(ex);
+    }
   };
 };
 

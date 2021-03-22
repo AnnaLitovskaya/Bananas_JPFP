@@ -4,8 +4,12 @@ const GET_CAMPUSES = 'GET_CAMPUSES';
 
 const getCampuses = () => {
   return async (dispatch) => {
-    const campuses = (await axios.get('/api/campuses')).data;
-    dispatch(_getCampuses(campuses));
+    try {
+      const campuses = (await axios.get('/api/campuses')).data;
+      dispatch(_getCampuses(campuses));
+    } catch (ex) {
+      console.log(ex);
+    }
   };
 };
 

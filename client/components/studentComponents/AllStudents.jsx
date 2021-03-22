@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getStudents } from '../../store/getStudents';
+import { getStudents } from '../../store/storeComponents/getStudents';
 import StudentTab from './StudentTab.jsx';
 
 class AllStudents extends Component {

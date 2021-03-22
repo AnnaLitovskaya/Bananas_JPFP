@@ -1,6 +1,6 @@
-import { GET_CAMPUSES } from '../constants';
+import { GET_CAMPUSES } from '../getCampuses';
 
-const campusReducer = (state = [], action) => {
+const campusesReducer = (state = [], action) => {
   switch (action.type) {
     case GET_CAMPUSES: {
       return [...action.campuses];
@@ -11,4 +11,4 @@ const campusReducer = (state = [], action) => {
   }
 };
 
-export default campusReducer;
+export default campusesReducer;

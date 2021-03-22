@@ -15,4 +15,17 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/:campusId', async (req, res, next) => {
+  try {
+    const campus = await Campus.findByPk(req.params.campusId, {
+      include: {
+        model: Student,
+      },
+    });
+    res.send(campus);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 module.exports = router;

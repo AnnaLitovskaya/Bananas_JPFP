@@ -1,6 +1,6 @@
-import { GET_STUDENTS } from '../constants';
+import { GET_STUDENTS } from '../getStudents';
 
-const studentReducer = (state = [], action) => {
+const studentsReducer = (state = [], action) => {
   switch (action.type) {
     case GET_STUDENTS: {
       return [...action.students];
@@ -11,4 +11,4 @@ const studentReducer = (state = [], action) => {
   }
 };
 
-export default studentReducer;
+export default studentsReducer;

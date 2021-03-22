@@ -7,7 +7,9 @@ const CampusTab = (props) => {
       <div className="campusTab">
         {<img src={props.tab.imageURL} />}
         <div>
-          <p>{props.tab.name}</p>
+          <p>
+            <Link to={`/campuses/${props.tab.id}`}>{props.tab.name}</Link>
+          </p>
           <p>{props.tab.Students.length} students</p>
           <div>
             <Link to={`/campuses/${props.tab.id}`}>Edit</Link>

@@ -50,7 +50,7 @@ nav {
   font-size: 1.5rem;
 }
 
-.campusTab > div div {
+.campusTab > div div div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -74,7 +74,7 @@ nav {
   align-items: center;
 }
 
-/* SINGLE STUDENT PAGE */
+/* SINGLE CAMPUS PAGE */
 #singleCampus {
   display: flex;
   width: 90%;
@@ -96,4 +96,34 @@ nav {
 #singleCampus div div {
   display: flex;
   justify-content: flex-end;
+}
+
+/* SINGLE STUDENT PAGE */
+#singleStudent {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding: 1rem;
+  border: black 1px solid;
+}
+
+#singleStudent div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+#singleStudent div div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+#singleStudent div div:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-end;
+  align-self: flex-end;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { singleCampus } from '../../store/storeComponents/singleCampus';
-import { HashRouter as Router, Link } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import StudentTab from '../studentComponents/StudentTab.jsx';
 
 class SingleCampus extends Component {
@@ -45,17 +45,21 @@ class SingleCampus extends Component {
             <h1>Students on Campus</h1>
             <button>Add Students</button>
           </div>
-          <div id="studentListing">
-            {campus.Students
-              ? campus.Students.map((student) => {
-                  return (
-                    <div key={student.id}>
-                      <StudentTab tab={student} />
-                    </div>
-                  );
-                })
-              : null}
-          </div>
+          {campus.Students && campus.Students.length ? (
+            <div id="studentListing">
+              {campus.Students.map((student) => {
+                return (
+                  <div key={student.id}>
+                    <StudentTab campus={true} tab={student} />
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <h3 className="emptyPage">
+              There are no students currently registered to this campus.
+            </h3>
+          )}
         </Router>
       );
     }

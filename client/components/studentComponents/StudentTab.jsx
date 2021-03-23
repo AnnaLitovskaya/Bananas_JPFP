@@ -9,10 +9,14 @@ const StudentTab = (props) => {
     return (
       <Router>
         <div className="studentTab">
-          <img src={student ? student.imageURL : ''} />
-          <p>
-            {student.firstName} {student.lastName}
-          </p>
+          <Link to={`/students/${student.id}`}>
+            <img src={student ? student.imageURL : ''} />{' '}
+          </Link>
+          <Link to={`/students/${student.id}`}>
+            <p>
+              {student.firstName} {student.lastName}
+            </p>
+          </Link>
           {student.Campus ? (
             <Link to={`/campuses/${student.Campus.id}`}>
               {student.Campus.name}

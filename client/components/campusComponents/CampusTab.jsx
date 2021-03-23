@@ -5,16 +5,24 @@ const CampusTab = (props) => {
   return (
     <Router>
       <div className="campusTab">
-        {<img src={props.tab.imageURL} />}
+        <Link to={`/campuses/${props.tab.id}`}>
+          {<img src={props.tab.imageURL} />}
+        </Link>
         <div>
           <p>
             <Link to={`/campuses/${props.tab.id}`}>{props.tab.name}</Link>
           </p>
-          <p>{props.tab.Students.length} students</p>
-          <div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
+          {props.tab.Students ? (
+            <div>
+              <p>{props.tab.Students.length} students</p>
+              <div>
+                <button>Edit</button>
+                <button>Delete</button>
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </Router>

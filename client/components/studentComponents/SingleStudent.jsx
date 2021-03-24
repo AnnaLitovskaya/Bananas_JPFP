@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { singleStudent } from '../../store/storeComponents/singleStudent';
 import { HashRouter as Router } from 'react-router-dom';
 import CampusTab from '../campusComponents/CampusTab.jsx';
+import SelectCampus from '../campusComponents/SelectCampus.jsx';
 
 class SingleStudent extends Component {
   componentDidMount() {
@@ -11,7 +12,6 @@ class SingleStudent extends Component {
   }
   render() {
     const student = this.props.student;
-    console.log(student.Campus);
     return (
       <Router>
         <div id="singleStudent">
@@ -40,25 +40,22 @@ class SingleStudent extends Component {
           {/* Campus Assignment */}
           {student.Campus ? (
             <div>
-              <h3 className="emptyPage">
-                This student is registered to a campus
-              </h3>
               <div>
-                <CampusTab tab={student.Campus} />
+                <h3 className="emptyPage">
+                  This student is registered to a campus
+                </h3>
+                <div id="singleStudentCampus">
+                  <CampusTab tab={student.Campus} />
+                  <SelectCampus />
+                  <button>Change Campus</button>
+                </div>
               </div>
             </div>
           ) : (
-            <div>
-              <h3 className="emptyPage">
-                The student is not registered to a campus.
-              </h3>
-              {/* <label htmlFor="campus">Select Campus</label>
-              <select name="campus" id="campusSelect">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-              </select> */}
+            <div className="emptyPage">
+              <h3>The student is not registered to a campus.</h3>
+              <SelectCampus />
+              <button>Add To Campus</button>
             </div>
           )}
         </div>

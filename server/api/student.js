@@ -28,4 +28,13 @@ router.get('/:studentId', async (req, res, next) => {
   }
 });
 
+router.post('/', async (req, res, next) => {
+  try {
+    await Student.create(req.params.body);
+    res.sendStatus(200);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 module.exports = router;

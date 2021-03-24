@@ -28,4 +28,13 @@ router.get('/:campusId', async (req, res, next) => {
   }
 });
 
+router.post('/addCampus', async (req, res, next) => {
+  try {
+    console.log(req.body);
+    res.status(201).send(await Campus.create(req.body));
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 module.exports = router;

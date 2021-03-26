@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getStudents } from './getStudents';
+import { getStudents } from '../studentStoreComponents/getStudents';
 
 const DELETE_STUDENT = 'DELETE_STUDENT';
 

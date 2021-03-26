@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Link } from 'react-router-dom';
-import { createCampus } from '../../store/storeComponents/createCampus';
+import { createCampus } from '../../store/storeComponents/campusStoreComponents/createCampus';
 
 class NewCampusForm extends Component {
   constructor() {

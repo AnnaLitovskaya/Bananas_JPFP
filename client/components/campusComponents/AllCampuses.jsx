@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCampuses } from '../../store/storeComponents/getCampuses';
+import { getCampuses } from '../../store/storeComponents/campusStoreComponents/getCampuses';
 import CampusTab from './CampusTab.jsx';
 
 class AllCampuses extends Component {

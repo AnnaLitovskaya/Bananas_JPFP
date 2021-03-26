@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deleteStudent } from '../../store/storeComponents/deleteStudent';
+import { deleteStudent } from '../../store/storeComponents/studentStoreComponents/deleteStudent';
 
 const StudentTab = (props) => {
   const student = props.tab;

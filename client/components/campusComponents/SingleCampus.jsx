@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { singleCampus } from '../../store/storeComponents/singleCampus';
-import { deleteCampus } from '../../store/storeComponents/deleteCampus';
+import { singleCampus } from '../../store/storeComponents/campusStoreComponents/singleCampus';
+import { deleteCampus } from '../../store/storeComponents/campusStoreComponents/deleteCampus';
 import { HashRouter as Router } from 'react-router-dom';
 import StudentTab from '../studentComponents/StudentTab.jsx';
 

@@ -1,6 +1,6 @@
-import { GET_CAMPUSES } from '../storeComponents/getCampuses';
-import { CREATE_CAMPUS } from '../storeComponents/createCampus';
-import { DELETE_CAMPUS } from '../storeComponents/deleteCampus';
+import { GET_CAMPUSES } from '../storeComponents/campusStoreComponents/getCampuses';
+import { CREATE_CAMPUS } from '../storeComponents/campusStoreComponents/createCampus';
+import { DELETE_CAMPUS } from '../storeComponents/campusStoreComponents/deleteCampus';
 
 const campusesReducer = (state = [], action) => {
   switch (action.type) {

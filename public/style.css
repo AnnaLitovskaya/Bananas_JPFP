@@ -1,3 +1,5 @@
+/* GENERAL CSS */
+
 body {
   margin: 1rem;
 }
@@ -20,8 +22,9 @@ nav {
   margin-left: 6%;
   margin-right: 6%;
 }
-
+/* =============================================================== */
 /* ALL CAMPUSES PAGE */
+
 #campusListing {
   display: flex;
   flex-wrap: wrap;
@@ -56,7 +59,9 @@ nav {
   justify-content: space-between;
 }
 
+/* =============================================================== */
 /* ALL STUDENTS PAGE */
+
 #studentListing {
   display: flex;
   flex-wrap: wrap;
@@ -78,7 +83,9 @@ nav {
   margin: 0.5rem;
 }
 
+/* =============================================================== */
 /* SINGLE CAMPUS PAGE */
+
 #singleCampus {
   display: flex;
   width: 90%;
@@ -102,7 +109,9 @@ nav {
   justify-content: flex-end;
 }
 
+/* =============================================================== */
 /* SINGLE STUDENT PAGE */
+
 #singleStudent {
   display: flex;
   width: 90%;
@@ -145,6 +154,7 @@ nav {
   align-items: center;
 }
 
+/* =============================================================== */
 /* ADD CAMPUS PAGE */
 
 #newCampusForm {
@@ -183,6 +193,7 @@ nav {
   flex: 2;
 }
 
+/* =============================================================== */
 /* ADD STUDENT PAGE */
 
 #newStudentForm {

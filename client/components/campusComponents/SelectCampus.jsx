@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getCampuses } from '../../store/storeComponents/getCampuses';
+import { getCampuses } from '../../store/storeComponents/campusStoreComponents/getCampuses';
 import { connect } from 'react-redux';
 
 class SelectCampus extends Component {

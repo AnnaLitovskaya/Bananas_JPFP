@@ -1,4 +1,4 @@
-import { SINGLE_STUDENT } from '../storeComponents/singleStudent';
+import { SINGLE_STUDENT } from '../storeComponents/studentStoreComponents/singleStudent';
 
 const singleStudentReducer = (state = {}, action) => {
   switch (action.type) {

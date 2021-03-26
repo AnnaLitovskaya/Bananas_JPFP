@@ -1,6 +1,6 @@
-import { GET_STUDENTS } from '../storeComponents/getStudents';
-import { CREATE_STUDENT } from '../storeComponents/createStudent';
-import { DELETE_STUDENT } from '../storeComponents/deleteStudent';
+import { GET_STUDENTS } from '../storeComponents/studentStoreComponents/getStudents';
+import { CREATE_STUDENT } from '../storeComponents/studentStoreComponents/createStudent';
+import { DELETE_STUDENT } from '../storeComponents/studentStoreComponents/deleteStudent';
 
 const studentsReducer = (state = [], action) => {
   switch (action.type) {

@@ -1,5 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { deleteStudent } from '../../store/storeComponents/deleteStudent';
 
 const StudentTab = (props) => {
   const student = props.tab;
@@ -28,10 +30,28 @@ const StudentTab = (props) => {
           ) : (
             ''
           )}
+          <div>
+            <button>Edit</button>
+            <button
+              onClick={() => {
+                props.deleteStudent(student.id);
+              }}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </Router>
     );
   }
 };
 
-export default StudentTab;
+const mapDispatchToProps = (dispatch, { history }) => {
+  return {
+    deleteStudent: (studentId) => {
+      dispatch(deleteStudent(studentId, history));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(StudentTab);

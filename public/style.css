@@ -74,6 +74,10 @@ nav {
   align-items: center;
 }
 
+.studentTab div {
+  margin: 0.5rem;
+}
+
 /* SINGLE CAMPUS PAGE */
 #singleCampus {
   display: flex;

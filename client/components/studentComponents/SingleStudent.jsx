@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { singleStudent } from '../../store/storeComponents/singleStudent';
+import { deleteStudent } from '../../store/storeComponents/deleteStudent';
 import { HashRouter as Router } from 'react-router-dom';
 import CampusTab from '../campusComponents/CampusTab.jsx';
 import SelectCampus from '../campusComponents/SelectCampus.jsx';
@@ -26,7 +27,13 @@ class SingleStudent extends Component {
             </div>
             <div>
               <button>Edit</button>
-              <button>Delete</button>
+              <button
+                onClick={() => {
+                  this.props.deleteStudent(student.id);
+                }}
+              >
+                Delete
+              </button>
             </div>
           </div>
         </div>
@@ -64,10 +71,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, { history }) => {
   return {
     singleStudent: (studentId) => {
       dispatch(singleStudent(studentId));
+    },
+    deleteStudent: (studentId) => {
+      dispatch(deleteStudent(studentId, history));
     },
   };
 };

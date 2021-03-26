@@ -1,23 +1,32 @@
 import React from 'react';
 import { HashRouter as Router, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { deleteCampus } from '../../store/storeComponents/deleteCampus';
 
 const CampusTab = (props) => {
+  const tab = props.tab;
   return (
     <Router>
       <div className="campusTab">
-        <Link to={`/campuses/${props.tab.id}`}>
-          {<img src={props.tab.imageURL} width="200" height="200" />}
+        <Link to={`/campuses/${tab.id}`}>
+          {<img src={tab.imageURL} width="200" height="200" />}
         </Link>
         <div>
           <p>
-            <Link to={`/campuses/${props.tab.id}`}>{props.tab.name}</Link>
+            <Link to={`/campuses/${tab.id}`}>{tab.name}</Link>
           </p>
-          {props.tab.Students ? (
+          {tab.Students ? (
             <div>
-              <p>{props.tab.Students.length} students</p>
+              <p>{tab.Students.length} students</p>
               <div>
                 <button>Edit</button>
-                <button>Delete</button>
+                <button
+                  onClick={() => {
+                    props.deleteCampus(tab.id);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ) : (
@@ -29,4 +38,12 @@ const CampusTab = (props) => {
   );
 };
 
-export default CampusTab;
+const mapDispatchToProps = (dispatch, { history }) => {
+  return {
+    deleteCampus: (campusId) => {
+      dispatch(deleteCampus(campusId, history));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CampusTab);

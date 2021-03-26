@@ -39,8 +39,16 @@ router.post('/', async (req, res, next) => {
 
 router.post('/addStudent', async (req, res, next) => {
   try {
-    console.log(req.body);
     res.send(await Student.create(req.body));
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+router.delete('/:studentId', async (req, res, next) => {
+  try {
+    let student = await Student.findByPk(req.params.studentId);
+    res.send(await student.destroy());
   } catch (ex) {
     next(ex);
   }

@@ -30,8 +30,16 @@ router.get('/:campusId', async (req, res, next) => {
 
 router.post('/addCampus', async (req, res, next) => {
   try {
-    console.log(req.body);
     res.send(await Campus.create(req.body));
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+router.delete('/:campusId', async (req, res, next) => {
+  try {
+    let campus = await Campus.findByPk(req.params.campusId);
+    res.send(await campus.destroy());
   } catch (ex) {
     next(ex);
   }

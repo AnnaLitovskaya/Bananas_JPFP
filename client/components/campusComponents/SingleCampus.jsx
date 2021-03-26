@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { singleCampus } from '../../store/storeComponents/singleCampus';
+import { deleteCampus } from '../../store/storeComponents/deleteCampus';
 import { HashRouter as Router } from 'react-router-dom';
 import StudentTab from '../studentComponents/StudentTab.jsx';
 
@@ -30,7 +31,13 @@ class SingleCampus extends Component {
               <p>{campus.description}</p>
               <div>
                 <button>Edit</button>
-                <button>Delete</button>
+                <button
+                  onClick={() => {
+                    this.props.deleteCampus(campus.id);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>
@@ -65,10 +72,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, { history }) => {
   return {
     singleCampus: (campusId) => {
       dispatch(singleCampus(campusId));
+    },
+    deleteCampus: (campusId) => {
+      dispatch(deleteCampus(campusId, history));
     },
   };
 };

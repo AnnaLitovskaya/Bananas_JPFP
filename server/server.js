@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const router = require('./api/router');
 
+app.use(express.json());
+
 app.use('/api', router);
 
 app.get('/', (req, res, next) => {

@@ -12,7 +12,9 @@ const syncAndSeed = async () => {
       return {
         name: `${faker.address.city()} University`,
         address: faker.address.streetAddress(),
-        addressExtended: `${faker.address.city()}, ${faker.address.state()} ${faker.address.zipCode()}`,
+        city: faker.address.city(),
+        state: faker.address.state(),
+        zipCode: parseInt(faker.address.zipCode().slice(0, 5)),
         description: faker.lorem.paragraphs(5),
       };
     });
@@ -20,7 +22,9 @@ const syncAndSeed = async () => {
       Campus.create({
         name: school.name,
         address: school.address,
-        addressExtended: school.addressExtended,
+        city: school.city,
+        state: school.state,
+        zipCode: school.zipCode,
         description: school.description,
       });
     });

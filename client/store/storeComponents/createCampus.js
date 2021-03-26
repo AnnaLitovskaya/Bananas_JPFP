@@ -1,17 +1,24 @@
 import axios from 'axios';
-import { getCampuses } from './getCampuses';
 
 const CREATE_CAMPUS = 'CREATE_CAMPUS';
 
-const createCampus = (newCampus, history) => {
+const createCampus = (campus, history) => {
   return async (dispatch) => {
     try {
-      await axios.post('/api/campuses/addCampus', newCampus);
-      dispatch(getCampuses());
+      const newCampus = (await axios.post('/api/campuses/addCampus', campus))
+        .data;
+      dispatch(_createCampus(newCampus));
       history.push('/campuses');
     } catch (ex) {
       console.log(ex);
     }
+  };
+};
+
+const _createCampus = (campus) => {
+  return {
+    type: CREATE_CAMPUS,
+    campus,
   };
 };
 

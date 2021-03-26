@@ -4,9 +4,18 @@ import { getCampuses } from '../../store/storeComponents/getCampuses';
 import CampusTab from './CampusTab.jsx';
 
 class AllCampuses extends Component {
+  constructor() {
+    super();
+    this.addCampus = this.addCampus.bind(this);
+  }
   componentDidMount() {
     this.props.getCampuses();
   }
+
+  addCampus() {
+    this.props.history.push('/campuses/addCampus');
+  }
+
   render() {
     const campuses = this.props.campuses;
     if (campuses.length === 0) {
@@ -22,7 +31,7 @@ class AllCampuses extends Component {
         <div>
           <div className="listHeader">
             <h1>All Campuses</h1>
-            <button>Add Campus</button>
+            <button onClick={this.addCampus}>Add Campus</button>
           </div>
           <div id="campusListing">
             {campuses.map((campus) => {

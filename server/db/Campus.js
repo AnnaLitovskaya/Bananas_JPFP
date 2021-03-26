@@ -20,12 +20,33 @@ const Campus = db.define('Campus', {
       notEmpty: true,
     },
   },
-  addressExtended: {
+  city: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
     },
+  },
+  state: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  zipCode: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      len: [5,6]
+    },
+  },
+  addressExtended: {
+    type: DataTypes.STRING,
+    get() {
+      return `${this.city}, ${this.state} ${this.zipCode}`
+    }
   },
   description: {
     type: DataTypes.TEXT,

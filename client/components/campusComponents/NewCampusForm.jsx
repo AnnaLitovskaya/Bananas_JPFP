@@ -13,6 +13,8 @@ class NewCampusForm extends Component {
       state: '',
       zipCode: '',
       addressExtended: '',
+      imageURL: '',
+      description: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,37 +26,67 @@ class NewCampusForm extends Component {
     });
   }
 
-  async handleSubmit(evt) {
-    await this.setState({
+  handleSubmit(ev) {
+    ev.preventDefault();
+    this.props.createCampus({
+      ...this.state,
       addressExtended: `${this.state.city}, ${this.state.state} ${this.state.zipCode}`,
     });
-    evt.preventDefault();
-    this.props.createCampus({ ...this.state });
   }
 
   render() {
-    const { name, address, city, state, zipCode } = this.state;
+    const {
+      name,
+      address,
+      city,
+      state,
+      zipCode,
+      imageURL,
+      description,
+    } = this.state;
     const { handleChange, handleSubmit } = this;
     return (
       <Router>
+        <h1 className="emptyPage">New Campus</h1>
         <form id="newCampusForm" onSubmit={handleSubmit}>
-          <label htmlFor="name">Campus Name:</label>
-          <input name="name" value={name} onChange={handleChange} />
+          <div>
+            <label htmlFor="name">Campus Name:</label>
+            <input name="name" value={name} onChange={handleChange} />
+          </div>
 
-          <label htmlFor="address">Street Address:</label>
-          <input name="address" value={address} onChange={handleChange} />
+          <div>
+            <label htmlFor="address">Street Address:</label>
+            <input name="address" value={address} onChange={handleChange} />
+            <label htmlFor="city"> City:</label>
+            <input name="city" value={city} onChange={handleChange} />
+          </div>
 
-          <label htmlFor="city">City:</label>
-          <input name="city" value={city} onChange={handleChange} />
+          <div>
+            <label htmlFor="state">State:</label>
+            <input name="state" value={state} onChange={handleChange} />
+            <label htmlFor="zipCode"> ZIP Code:</label>
+            <input name="zipCode" value={zipCode} onChange={handleChange} />
+          </div>
 
-          <label htmlFor="state">State:</label>
-          <input name="state" value={state} onChange={handleChange} />
+          <div>
+            <label htmlFor="imageURL">Image URL:</label>
+            <input name="imageURL" value={imageURL} onChange={handleChange} />
+          </div>
 
-          <label htmlFor="zipCode">zipCode:</label>
-          <input name="zipCode" value={zipCode} onChange={handleChange} />
+          <div>
+            <label htmlFor="description">Campus Description:</label>
+            <textarea
+              type="text"
+              name="description"
+              value={description}
+              onChange={handleChange}
+            />
+          </div>
 
-          <button type="submit">Submit</button>
-          <Link to="/">Cancel</Link>
+          <div>
+            <button type="submit">Submit</button>
+            <Link to="/">Cancel</Link>
+          </div>
         </form>
       </Router>
     );

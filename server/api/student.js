@@ -37,4 +37,13 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+router.post('/addStudent', async (req, res, next) => {
+  try {
+    console.log(req.body);
+    res.send(await Student.create(req.body));
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 module.exports = router;

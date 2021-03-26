@@ -6,7 +6,7 @@ const CampusTab = (props) => {
     <Router>
       <div className="campusTab">
         <Link to={`/campuses/${props.tab.id}`}>
-          {<img src={props.tab.imageURL} />}
+          {<img src={props.tab.imageURL} width="200" height="200" />}
         </Link>
         <div>
           <p>

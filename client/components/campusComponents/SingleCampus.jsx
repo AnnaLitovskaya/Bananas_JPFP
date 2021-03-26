@@ -19,14 +19,7 @@ class SingleCampus extends Component {
         <Router>
           <div id="singleCampus">
             <div>
-              <img
-                src={
-                  campus.imageURL
-                    ? campus.imageURL.slice(0, campus.imageURL.length - 3) +
-                      '400'
-                    : ''
-                }
-              />
+              <img src={campus.imageURL} width="400" height="400" />
               <p>
                 {campus.address} <br />
                 {campus.addressExtended}
@@ -56,7 +49,7 @@ class SingleCampus extends Component {
               })}
             </div>
           ) : (
-            <h3 className="emptyPage">
+            <h3 className="center">
               There are no students currently registered to this campus.
             </h3>
           )}

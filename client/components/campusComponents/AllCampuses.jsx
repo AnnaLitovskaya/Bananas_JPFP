@@ -20,10 +20,10 @@ class AllCampuses extends Component {
     const campuses = this.props.campuses;
     if (campuses.length === 0) {
       return (
-        <div className="emptyPage">
+        <div className="center">
           <h1>All Campuses</h1>
           <h3>There are no campuses registered in the database.</h3>
-          <button>Add Campus</button>
+          <button onClick={this.addCampus}>Add Campus</button>
         </div>
       );
     } else {

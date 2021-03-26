@@ -7,7 +7,7 @@ nav {
   justify-content: space-around;
 }
 
-.emptyPage {
+.center {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -174,6 +174,44 @@ nav {
 }
 
 #newCampusForm textarea {
+  display: flex;
+  height: 8rem;
+  flex: 2;
+}
+
+/* ADD STUDENT PAGE */
+
+#newStudentForm {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  border: black 1px solid;
+}
+
+#newStudentForm input {
+  display: flex;
+  height: 1.5rem;
+  flex: 2;
+}
+
+#newStudentForm label {
+  display: flex;
+  flex: 1;
+  margin-left: 1rem;
+}
+
+#newStudentForm div {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+}
+
+#newStudentForm textarea {
   display: flex;
   height: 8rem;
   flex: 2;

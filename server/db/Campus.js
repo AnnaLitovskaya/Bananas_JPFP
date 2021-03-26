@@ -11,7 +11,7 @@ const Campus = db.define('Campus', {
   },
   imageURL: {
     type: DataTypes.STRING,
-    defaultValue: 'https://picsum.photos/id/101/200',
+    defaultValue: 'https://picsum.photos/id/101/400',
   },
   address: {
     type: DataTypes.STRING,
@@ -39,7 +39,6 @@ const Campus = db.define('Campus', {
     allowNull: false,
     validate: {
       notEmpty: true,
-      len: [5,6]
     },
   },
   addressExtended: {
@@ -61,7 +60,9 @@ Campus.beforeCreate( (campus) => {
     const randomNum = Math.floor(Math.random() * buildingImageArr.length);
     return buildingImageArr[randomNum];
   };
-  campus.imageURL = campus.imageURL.slice(0, 25) + randomImage() + '/200'
+  if(campus.imageURL === 'https://picsum.photos/id/101/400'){
+    campus.imageURL = campus.imageURL.slice(0, 25) + randomImage() + '/200'
+  }
 });
 
 module.exports = Campus;

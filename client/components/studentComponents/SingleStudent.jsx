@@ -15,13 +15,7 @@ class SingleStudent extends Component {
     return (
       <Router>
         <div id="singleStudent">
-          <img
-            src={
-              student.imageURL
-                ? student.imageURL.slice(0, student.imageURL.length - 3) + '400'
-                : ''
-            }
-          />
+          <img src={student.imageURL} width="400" height="400" />
           <div>
             <div>
               <h1>
@@ -41,7 +35,7 @@ class SingleStudent extends Component {
           {student.Campus ? (
             <div>
               <div>
-                <h3 className="emptyPage">
+                <h3 className="center">
                   This student is registered to a campus
                 </h3>
                 <div id="singleStudentCampus">
@@ -52,7 +46,7 @@ class SingleStudent extends Component {
               </div>
             </div>
           ) : (
-            <div className="emptyPage">
+            <div className="center">
               <h3>The student is not registered to a campus.</h3>
               <SelectCampus />
               <button>Add To Campus</button>

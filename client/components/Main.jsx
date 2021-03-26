@@ -5,6 +5,7 @@ import SingleCampus from './campusComponents/SingleCampus.jsx';
 import NewCampusForm from './campusComponents/NewCampusForm.jsx';
 import AllStudents from './studentComponents/AllStudents.jsx';
 import SingleStudent from './studentComponents/SingleStudent.jsx';
+import NewStudentForm from './studentComponents/NewStudentForm.jsx';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 class Main extends Component {
@@ -18,6 +19,7 @@ class Main extends Component {
           <Route path="/campuses/addCampus" component={NewCampusForm} exact />
           <Route path="/campuses/:campusId" component={SingleCampus} />
           <Route path="/students" component={AllStudents} exact />
+          <Route path="/students/addStudent" component={NewStudentForm} exact />
           <Route path="/students/:studentId" component={SingleStudent} />
         </Switch>
       </Router>

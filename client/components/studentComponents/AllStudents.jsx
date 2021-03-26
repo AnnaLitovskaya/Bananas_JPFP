@@ -4,17 +4,26 @@ import { getStudents } from '../../store/storeComponents/getStudents';
 import StudentTab from './StudentTab.jsx';
 
 class AllStudents extends Component {
+  constructor() {
+    super();
+    this.addStudent = this.addStudent.bind(this);
+  }
   componentDidMount() {
     this.props.getStudents();
   }
+
+  addStudent() {
+    this.props.history.push('/students/addStudent');
+  }
+
   render() {
     const students = this.props.students;
     if (students.length === 0) {
       return (
-        <div className="emptyPage">
+        <div className="center">
           <h1>All Students</h1>
           <h3>There are no students registered in the database.</h3>
-          <button>Add Student</button>
+          <button onClick={this.addStudent}>Add Student</button>
         </div>
       );
     } else {
@@ -22,7 +31,7 @@ class AllStudents extends Component {
         <div>
           <div className="listHeader">
             <h1>All Students</h1>
-            <button>Add Student</button>
+            <button onClick={this.addStudent}>Add Student</button>
           </div>
           <div id="studentListing">
             {students.map((student) => {

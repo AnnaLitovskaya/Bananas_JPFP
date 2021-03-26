@@ -47,7 +47,7 @@ class NewCampusForm extends Component {
     const { handleChange, handleSubmit } = this;
     return (
       <Router>
-        <h1 className="emptyPage">New Campus</h1>
+        <h1 className="center">New Campus</h1>
         <form id="newCampusForm" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Campus Name:</label>

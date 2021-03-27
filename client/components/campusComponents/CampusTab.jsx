@@ -19,6 +19,7 @@ const CampusTab = (props) => {
             <div>
               <p>{tab.Students.length} students</p>
               <div>
+                {console.log(props)}
                 <button>Edit</button>
                 <button
                   onClick={() => {

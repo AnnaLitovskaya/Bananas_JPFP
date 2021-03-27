@@ -17,7 +17,8 @@ class Main extends Component {
           <Route path="/" exact />
           <Route path="/campuses" component={AllCampuses} exact />
           <Route path="/campuses/addCampus" component={NewCampusForm} exact />
-          <Route path="/campuses/:campusId" component={SingleCampus} />
+          <Route path="/campuses/:campusId" component={SingleCampus} exact />
+          <Route path="/campuses/:campusId/edit" component={NewCampusForm} />
           <Route path="/students" component={AllStudents} exact />
           <Route path="/students/addStudent" component={NewStudentForm} exact />
           <Route path="/students/:studentId" component={SingleStudent} />

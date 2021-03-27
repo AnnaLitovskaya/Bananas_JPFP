@@ -43,6 +43,9 @@ Student.beforeCreate( (student) => {
     const randomNum = Math.floor(Math.random() * peopleImageArr.length - 1);
     return peopleImageArr[randomNum];
   };
+  if(student.imageURL === ''){
+    student.imageURL = 'https://picsum.photos/id/1005/200'
+  }
   if(student.imageURL === 'https://picsum.photos/id/1005/200'){
     student.imageURL = student.imageURL.slice(0, 25) + randomImage() + '/200'
   }

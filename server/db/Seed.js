@@ -14,7 +14,7 @@ const syncAndSeed = async () => {
         address: faker.address.streetAddress(),
         city: faker.address.city(),
         state: faker.address.state(),
-        zipCode: parseInt(faker.address.zipCode().slice(0, 5)),
+        zipCode: faker.address.zipCode().slice(0, 5),
         description: faker.lorem.paragraphs(5),
       };
     });

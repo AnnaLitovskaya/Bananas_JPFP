@@ -17,6 +17,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:campusId', async (req, res, next) => {
   try {
+    console.log(req.params.campusId);
     const campus = await Campus.findByPk(req.params.campusId, {
       include: {
         model: Student,
@@ -38,8 +39,18 @@ router.post('/addCampus', async (req, res, next) => {
 
 router.delete('/:campusId', async (req, res, next) => {
   try {
-    let campus = await Campus.findByPk(req.params.campusId);
+    const campus = await Campus.findByPk(req.params.campusId);
     res.send(await campus.destroy());
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+router.put('/:campusId', async (req, res, next) => {
+  try {
+    const campus = await Campus.findByPk(req.params.campusId);
+    const updatedCampus = await campus.Update(req.body);
+    res.send(updatedCampus);
   } catch (ex) {
     next(ex);
   }

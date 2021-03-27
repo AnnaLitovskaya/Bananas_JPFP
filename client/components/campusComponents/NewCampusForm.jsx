@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Link } from 'react-router-dom';
 import { createCampus } from '../../store/storeComponents/campusStoreComponents/createCampus';
+import { singleCampus } from '../../store/storeComponents/campusStoreComponents/singleCampus';
+import { updateCampus } from '../../store/storeComponents/campusStoreComponents/updateCampus';
 
 class NewCampusForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      id: '',
       name: '',
       address: '',
       city: '',
@@ -28,10 +31,32 @@ class NewCampusForm extends Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
-    this.props.createCampus({
-      ...this.state,
-      addressExtended: `${this.state.city}, ${this.state.state} ${this.state.zipCode}`,
-    });
+    if (!this.props.match.params.campusId) {
+      this.props.createCampus({
+        ...this.state,
+        addressExtended: `${this.state.city}, ${this.state.state} ${this.state.zipCode}`,
+      });
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.match.params.campusId) {
+      this.props.singleCampus(this.props.match.params.campusId);
+      this.setState({ ...this.props.campus });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log(
+      'needs to change',
+      '1',
+      this.props.campus.id,
+      '2',
+      prevProps.campus.id * 1
+    );
+    if (this.props.campus.id !== prevProps.campus.id) {
+      this.setState({ ...this.props.campus });
+    }
   }
 
   render() {
@@ -47,7 +72,11 @@ class NewCampusForm extends Component {
     const { handleChange, handleSubmit } = this;
     return (
       <Router>
-        <h1 className="center">New Campus</h1>
+        {!this.props.match.params.campusId ? (
+          <h1 className="center">New Campus</h1>
+        ) : (
+          <h1 className="center">Edit Campus</h1>
+        )}
         <form id="newCampusForm" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Campus Name:</label>
@@ -93,12 +122,24 @@ class NewCampusForm extends Component {
   }
 }
 
+const mapStateToProps = ({ campus }) => {
+  return {
+    campus,
+  };
+};
+
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
     createCampus: (campus) => {
       dispatch(createCampus(campus, history));
     },
+    singleCampus: (campusId) => {
+      dispatch(singleCampus(campusId));
+    },
+    updateCampus: (campus) => {
+      dispatch(updateCampus(campus, history));
+    },
   };
 };
 
-export default connect(null, mapDispatchToProps)(NewCampusForm);
+export default connect(mapStateToProps, mapDispatchToProps)(NewCampusForm);

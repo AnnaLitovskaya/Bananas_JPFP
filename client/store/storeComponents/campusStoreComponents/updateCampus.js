@@ -5,6 +5,7 @@ const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
 const updateCampus = (campus, history) => {
   return async (dispatch) => {
     try {
+      console.log(campus);
       const updatedCampus = (
         await axios.put(`/api/campuses/${campus.id}`, campus)
       ).data;

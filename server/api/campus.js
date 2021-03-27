@@ -49,7 +49,7 @@ router.delete('/:campusId', async (req, res, next) => {
 router.put('/:campusId', async (req, res, next) => {
   try {
     const campus = await Campus.findByPk(req.params.campusId);
-    const updatedCampus = await campus.Update(req.body);
+    const updatedCampus = await campus.update(req.body);
     res.send(updatedCampus);
   } catch (ex) {
     next(ex);

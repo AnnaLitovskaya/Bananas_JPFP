@@ -19,8 +19,9 @@ const CampusTab = (props) => {
             <div>
               <p>{tab.Students.length} students</p>
               <div>
-                {console.log(props)}
-                <button>Edit</button>
+                <Link to={`/campuses/${tab.id}/edit`}>
+                  <button>Edit</button>
+                </Link>
                 <button
                   onClick={() => {
                     props.deleteCampus(tab.id);
@@ -43,6 +44,10 @@ const mapDispatchToProps = (dispatch, { history }) => {
   return {
     deleteCampus: (campusId) => {
       dispatch(deleteCampus(campusId, history));
+    },
+    editCampus: () => {
+      console.log(history);
+      history.push(`/campuses/${tab.id}/edit`);
     },
   };
 };

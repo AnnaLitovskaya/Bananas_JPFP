@@ -36,6 +36,11 @@ class NewCampusForm extends Component {
         ...this.state,
         addressExtended: `${this.state.city}, ${this.state.state} ${this.state.zipCode}`,
       });
+    } else {
+      this.props.updateCampus({
+        ...this.state,
+        addressExtended: `${this.state.city}, ${this.state.state} ${this.state.zipCode}`,
+      });
     }
   }
 
@@ -47,13 +52,6 @@ class NewCampusForm extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(
-      'needs to change',
-      '1',
-      this.props.campus.id,
-      '2',
-      prevProps.campus.id * 1
-    );
     if (this.props.campus.id !== prevProps.campus.id) {
       this.setState({ ...this.props.campus });
     }

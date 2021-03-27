@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { singleCampus } from '../../store/storeComponents/campusStoreComponents/singleCampus';
 import { deleteCampus } from '../../store/storeComponents/campusStoreComponents/deleteCampus';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router, Link } from 'react-router-dom';
 import StudentTab from '../studentComponents/StudentTab.jsx';
 
 class SingleCampus extends Component {
@@ -30,7 +30,9 @@ class SingleCampus extends Component {
               <h1>{campus.name}</h1>
               <p>{campus.description}</p>
               <div>
-                <button>Edit</button>
+                <Link to={`/campuses/${campus.id}/edit`}>
+                  <button>Edit</button>
+                </Link>
                 <button
                   onClick={() => {
                     this.props.deleteCampus(campus.id);

@@ -5,7 +5,7 @@ import { createCampus } from '../../store/storeComponents/campusStoreComponents/
 import { singleCampus } from '../../store/storeComponents/campusStoreComponents/singleCampus';
 import { updateCampus } from '../../store/storeComponents/campusStoreComponents/updateCampus';
 
-class NewCampusForm extends Component {
+class CampusForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -112,7 +112,9 @@ class NewCampusForm extends Component {
 
           <div>
             <button type="submit">Submit</button>
-            <Link to="/">Cancel</Link>
+            <Link to="/campuses">
+              <button>Cancel</button>
+            </Link>
           </div>
         </form>
       </Router>
@@ -140,4 +142,4 @@ const mapDispatchToProps = (dispatch, { history }) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCampusForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CampusForm);

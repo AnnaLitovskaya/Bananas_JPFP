@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Link } from 'react-router-dom';
 import { createStudent } from '../../store/storeComponents/studentStoreComponents/createStudent';
+import { singleStudent } from '../../store/storeComponents/studentStoreComponents/singleStudent';
+import { updateStudent } from '../../store/storeComponents/studentStoreComponents/updateStudent';
 
-class NewStudentForm extends Component {
+class StudentForm extends Component {
   constructor() {
     super();
     this.state = {
+      id: '',
       firstName: '',
       lastName: '',
       email: '',
@@ -25,9 +28,24 @@ class NewStudentForm extends Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
-    this.props.createStudent({
-      ...this.state,
-    });
+    if (!this.props.match.params.studentId) {
+      this.props.createStudent(this.state);
+    } else {
+      this.props.updateStudent(this.state);
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.match.params.studentId) {
+      this.props.singleStudent(this.props.match.params.studentId);
+      this.setState(this.props.student);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.student.id !== prevProps.student.id) {
+      this.setState(this.props.student);
+    }
   }
 
   render() {
@@ -66,7 +84,9 @@ class NewStudentForm extends Component {
 
           <div>
             <button type="submit">Submit</button>
-            <Link to="/">Cancel</Link>
+            <Link to="/students">
+              <button>Cancel</button>
+            </Link>
           </div>
         </form>
       </Router>
@@ -74,12 +94,24 @@ class NewStudentForm extends Component {
   }
 }
 
+const mapStateToProps = ({ student }) => {
+  return {
+    student,
+  };
+};
+
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
     createStudent: (student) => {
       dispatch(createStudent(student, history));
     },
+    singleStudent: (studentId) => {
+      dispatch(singleStudent(studentId));
+    },
+    updateStudent: (student) => {
+      dispatch(updateStudent(student, history));
+    },
   };
 };
 
-export default connect(null, mapDispatchToProps)(NewStudentForm);
+export default connect(mapStateToProps, mapDispatchToProps)(StudentForm);

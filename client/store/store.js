@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import loggingMiddleware from 'redux-logger';
 import rootReducer from './reducers/combineReducer';
 
-const middleware = applyMiddleware(thunk, loggingMiddleware);
+const middleware = applyMiddleware(thunk);
 
 const store = createStore(rootReducer, middleware);
 

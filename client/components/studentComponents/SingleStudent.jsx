@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { singleStudent } from '../../store/storeComponents/studentStoreComponents/singleStudent';
 import { deleteStudent } from '../../store/storeComponents/studentStoreComponents/deleteStudent';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router, Link } from 'react-router-dom';
 import CampusTab from '../campusComponents/CampusTab.jsx';
 import SelectCampus from '../campusComponents/SelectCampus.jsx';
 
 class SingleStudent extends Component {
+  constructor() {
+    super();
+    this.state = {
+      Campus: {},
+    };
+  }
   componentDidMount() {
     const studentId = this.props.match.params.studentId * 1;
     this.props.singleStudent(studentId);
@@ -26,7 +32,9 @@ class SingleStudent extends Component {
               <h3>{student.email}</h3>
             </div>
             <div>
-              <button>Edit</button>
+              <Link to={`/students/${student.id}/edit`}>
+                <button>Edit</button>
+              </Link>
               <button
                 onClick={() => {
                   this.props.deleteStudent(student.id);
@@ -47,16 +55,14 @@ class SingleStudent extends Component {
                 </h3>
                 <div id="singleStudentCampus">
                   <CampusTab tab={student.Campus} />
-                  <SelectCampus />
-                  <button>Change Campus</button>
+                  <SelectCampus studentId={student.id} />
                 </div>
               </div>
             </div>
           ) : (
             <div className="center">
               <h3>The student is not registered to a campus.</h3>
-              <SelectCampus />
-              <button>Add To Campus</button>
+              <SelectCampus studentId={student.id} />
             </div>
           )}
         </div>
@@ -65,9 +71,9 @@ class SingleStudent extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ student }) => {
   return {
-    student: state.student,
+    student,
   };
 };
 

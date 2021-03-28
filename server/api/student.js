@@ -54,4 +54,24 @@ router.delete('/:studentId', async (req, res, next) => {
   }
 });
 
+router.put('/:studentId', async (req, res, next) => {
+  try {
+    const student = await Student.findByPk(req.params.studentId);
+    const updatedStudent = await student.update(req.body);
+    res.send(updatedStudent);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+router.put('/:studentId/newCampus', async (req, res, next) => {
+  try {
+    const student = await Student.findByPk(req.params.studentId);
+    const updatedStudent = await student.update({ CampusId: req.body.id });
+    res.send(updatedStudent);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 module.exports = router;

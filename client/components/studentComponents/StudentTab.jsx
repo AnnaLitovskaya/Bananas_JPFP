@@ -31,7 +31,9 @@ const StudentTab = (props) => {
             ''
           )}
           <div>
-            <button>Edit</button>
+            <Link to={`/students/${student.id}/edit`}>
+              <button>Edit</button>
+            </Link>
             <button
               onClick={() => {
                 props.deleteStudent(student.id);

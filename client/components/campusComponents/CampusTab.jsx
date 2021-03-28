@@ -46,7 +46,6 @@ const mapDispatchToProps = (dispatch, { history }) => {
       dispatch(deleteCampus(campusId, history));
     },
     editCampus: () => {
-      console.log(history);
       history.push(`/campuses/${tab.id}/edit`);
     },
   };

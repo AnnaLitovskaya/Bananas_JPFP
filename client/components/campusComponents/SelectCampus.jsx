@@ -17,7 +17,6 @@ class SelectCampus extends Component {
     if (this.props.studentId) {
       this.props.singleStudent(this.props.studentId);
     }
-    console.log(this.props);
   }
 
   onSelect(ev) {
@@ -35,7 +34,7 @@ class SelectCampus extends Component {
         <div id="campusSelect">
           <label htmlFor="campus">Select Campus: </label>
           <select name="campus" onChange={this.onSelect}>
-            <option value={null}>{'No Campus'}</option>
+            <option value={''}>{'Unregister'}</option>
             {this.props.campuses.map((campus) => {
               return (
                 <option key={campus.id} value={campus.id}>

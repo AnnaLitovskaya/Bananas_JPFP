@@ -12,7 +12,6 @@ class SingleCampus extends Component {
   }
   render() {
     const campus = this.props.campus;
-    console.log(campus.Students);
     if (!campus) {
       return <h1>...loading</h1>;
     } else {

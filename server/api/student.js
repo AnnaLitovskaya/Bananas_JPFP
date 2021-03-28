@@ -67,7 +67,12 @@ router.put('/:studentId', async (req, res, next) => {
 router.put('/:studentId/newCampus', async (req, res, next) => {
   try {
     const student = await Student.findByPk(req.params.studentId);
-    const updatedStudent = await student.update({ CampusId: req.body.id });
+    let updatedStudent;
+    if (req.body.id) {
+      updatedStudent = await student.update({ CampusId: req.body.id });
+    } else {
+      updatedStudent = await student.update({ CampusId: null });
+    }
     res.send(updatedStudent);
   } catch (ex) {
     next(ex);

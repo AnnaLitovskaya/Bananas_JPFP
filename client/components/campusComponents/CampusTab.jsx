@@ -7,7 +7,9 @@ import { singleStudent } from '../../store/storeComponents/studentStoreComponent
 
 class CampusTab extends Component {
   componentDidMount() {
-    this.props.singleStudent(this.props.studentId);
+    if (this.props.studentId) {
+      this.props.singleStudent(this.props.studentId);
+    }
   }
   render() {
     const unregisterCampus = { id: '' };

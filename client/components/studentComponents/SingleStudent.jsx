@@ -8,8 +8,10 @@ import SelectCampus from '../campusComponents/SelectCampus.jsx';
 
 class SingleStudent extends Component {
   componentDidMount() {
-    const studentId = this.props.match.params.studentId * 1;
-    this.props.singleStudent(studentId);
+    if (!this.props.student.id) {
+      const studentId = this.props.match.params.studentId * 1;
+      this.props.singleStudent(studentId);
+    }
   }
   render() {
     const student = this.props.student;

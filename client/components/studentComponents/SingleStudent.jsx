@@ -7,12 +7,6 @@ import CampusTab from '../campusComponents/CampusTab.jsx';
 import SelectCampus from '../campusComponents/SelectCampus.jsx';
 
 class SingleStudent extends Component {
-  constructor() {
-    super();
-    this.state = {
-      Campus: {},
-    };
-  }
   componentDidMount() {
     const studentId = this.props.match.params.studentId * 1;
     this.props.singleStudent(studentId);

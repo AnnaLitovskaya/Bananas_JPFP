@@ -1,10 +1,12 @@
 import React from 'react';
-import { HashRouter as Router, Link } from 'react-router-dom';
+import { withRouter, HashRouter as Router, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deleteStudent } from '../../store/storeComponents/studentStoreComponents/deleteStudent';
+import { changeStudentCampus } from '../../store/storeComponents/studentStoreComponents/changeStudentCampus';
 
 const StudentTab = (props) => {
   const student = props.tab;
+  const unregisterCampus = { id: '' };
   if (!student) {
     return '';
   } else {
@@ -30,18 +32,28 @@ const StudentTab = (props) => {
           ) : (
             ''
           )}
-          <div>
-            <Link to={`/students/${student.id}/edit`}>
-              <button>Edit</button>
-            </Link>
+          {props.campus ? (
             <button
               onClick={() => {
-                props.deleteStudent(student.id);
+                props.changeStudentCampus(student, unregisterCampus);
               }}
             >
-              Delete
+              Unregister
             </button>
-          </div>
+          ) : (
+            <div>
+              <Link to={`/students/${student.id}/edit`}>
+                <button>Edit</button>
+              </Link>
+              <button
+                onClick={() => {
+                  props.deleteStudent(student.id);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          )}
         </div>
       </Router>
     );
@@ -53,7 +65,10 @@ const mapDispatchToProps = (dispatch, { history }) => {
     deleteStudent: (studentId) => {
       dispatch(deleteStudent(studentId, history));
     },
+    changeStudentCampus: (student, campus) => {
+      dispatch(changeStudentCampus(student, campus, history));
+    },
   };
 };
 
-export default connect(null, mapDispatchToProps)(StudentTab);
+export default withRouter(connect(null, mapDispatchToProps)(StudentTab));

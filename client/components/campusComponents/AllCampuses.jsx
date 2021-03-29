@@ -48,9 +48,9 @@ class AllCampuses extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ campuses }) => {
   return {
-    campuses: state.campuses,
+    campuses,
   };
 };
 

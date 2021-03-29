@@ -4,6 +4,7 @@ import { singleCampus } from '../../store/storeComponents/campusStoreComponents/
 import { deleteCampus } from '../../store/storeComponents/campusStoreComponents/deleteCampus';
 import { HashRouter as Router, Link } from 'react-router-dom';
 import StudentTab from '../studentComponents/StudentTab.jsx';
+import SelectStudent from '../studentComponents/SelectStudent.jsx';
 
 class SingleCampus extends Component {
   componentDidMount() {
@@ -44,7 +45,7 @@ class SingleCampus extends Component {
           </div>
           <div className="listHeader">
             <h1>Students on Campus</h1>
-            <button>Add Students</button>
+            <SelectStudent campus={campus.id} />
           </div>
           {campus.Students && campus.Students.length ? (
             <div id="studentListing">
@@ -67,9 +68,9 @@ class SingleCampus extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ campus }) => {
   return {
-    campus: state.campus,
+    campus,
   };
 };
 

@@ -34,7 +34,7 @@ class SelectCampus extends Component {
         <div id="campusSelect">
           <label htmlFor="campus">Select Campus: </label>
           <select name="campus" onChange={this.onSelect}>
-            <option value={''}>{'Unregister'}</option>
+            <option value={''}>{'--Select Campus--'}</option>
             {this.props.campuses.map((campus) => {
               return (
                 <option key={campus.id} value={campus.id}>

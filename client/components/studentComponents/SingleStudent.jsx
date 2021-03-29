@@ -48,7 +48,7 @@ class SingleStudent extends Component {
                   This student is registered to a campus
                 </h3>
                 <div id="singleStudentCampus">
-                  <CampusTab tab={student.Campus} />
+                  <CampusTab tab={student.Campus} studentId={student.id} />
                   <SelectCampus studentId={student.id} />
                 </div>
               </div>

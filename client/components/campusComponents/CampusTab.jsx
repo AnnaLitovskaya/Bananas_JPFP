@@ -1,43 +1,66 @@
-import React from 'react';
-import { HashRouter as Router, Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { withRouter, HashRouter as Router, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deleteCampus } from '../../store/storeComponents/campusStoreComponents/deleteCampus';
+import { changeStudentCampus } from '../../store/storeComponents/studentStoreComponents/changeStudentCampus';
+import { singleStudent } from '../../store/storeComponents/studentStoreComponents/singleStudent';
 
-const CampusTab = (props) => {
-  const tab = props.tab;
-  return (
-    <Router>
-      <div className="campusTab">
-        <Link to={`/campuses/${tab.id}`}>
-          {<img src={tab.imageURL} width="200" height="200" />}
-        </Link>
-        <div>
-          <p>
-            <Link to={`/campuses/${tab.id}`}>{tab.name}</Link>
-          </p>
-          {tab.Students ? (
-            <div>
-              <p>{tab.Students.length} students</p>
+class CampusTab extends Component {
+  componentDidMount() {
+    this.props.singleStudent(this.props.studentId);
+  }
+  render() {
+    const unregisterCampus = { id: '' };
+    const tab = this.props.tab;
+    return (
+      <Router>
+        <div className="campusTab">
+          <Link to={`/campuses/${tab.id}`}>
+            {<img src={tab.imageURL} width="200" height="200" />}
+          </Link>
+          <div>
+            <p>
+              <Link to={`/campuses/${tab.id}`}>{tab.name}</Link>
+            </p>
+            {tab.Students ? (
               <div>
-                <Link to={`/campuses/${tab.id}/edit`}>
-                  <button>Edit</button>
-                </Link>
-                <button
-                  onClick={() => {
-                    props.deleteCampus(tab.id);
-                  }}
-                >
-                  Delete
-                </button>
+                <p>{tab.Students.length} students</p>
+                <div>
+                  <Link to={`/campuses/${tab.id}/edit`}>
+                    <button>Edit</button>
+                  </Link>
+                  <button
+                    onClick={() => {
+                      this.props.deleteCampus(tab.id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
-            </div>
-          ) : (
-            ''
-          )}
+            ) : (
+              <button
+                onClick={() => {
+                  this.props.changeStudentCampus(
+                    this.props.student,
+                    unregisterCampus
+                  );
+                }}
+              >
+                Unregister
+              </button>
+            )}
+          </div>
         </div>
-      </div>
-    </Router>
-  );
+      </Router>
+    );
+  }
+}
+
+const mapStateToProps = ({ student }) => {
+  return {
+    student,
+  };
 };
 
 const mapDispatchToProps = (dispatch, { history }) => {
@@ -48,7 +71,15 @@ const mapDispatchToProps = (dispatch, { history }) => {
     editCampus: () => {
       history.push(`/campuses/${tab.id}/edit`);
     },
+    changeStudentCampus: (student, campus) => {
+      dispatch(changeStudentCampus(student, campus, history));
+    },
+    singleStudent: (studentId) => {
+      dispatch(singleStudent(studentId));
+    },
   };
 };
 
-export default connect(null, mapDispatchToProps)(CampusTab);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CampusTab)
+);

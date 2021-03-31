@@ -18,6 +18,7 @@ class CampusForm extends Component {
       addressExtended: '',
       imageURL: '',
       description: '',
+      warningMessage: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -78,21 +79,38 @@ class CampusForm extends Component {
         <form id="newCampusForm" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Campus Name:</label>
-            <input name="name" value={name} onChange={handleChange} />
+            <input required name="name" value={name} onChange={handleChange} />
           </div>
 
           <div>
             <label htmlFor="address">Street Address:</label>
-            <input name="address" value={address} onChange={handleChange} />
+            <input
+              required
+              name="address"
+              value={address}
+              onChange={handleChange}
+            />
             <label htmlFor="city"> City:</label>
-            <input name="city" value={city} onChange={handleChange} />
+            <input required name="city" value={city} onChange={handleChange} />
           </div>
 
           <div>
             <label htmlFor="state">State:</label>
-            <input name="state" value={state} onChange={handleChange} />
+            <input
+              required
+              name="state"
+              value={state}
+              onChange={handleChange}
+            />
             <label htmlFor="zipCode"> ZIP Code:</label>
-            <input name="zipCode" value={zipCode} onChange={handleChange} />
+            <input
+              required
+              type="text"
+              pattern="\d{5,5}(-\d{4,4})?"
+              name="zipCode"
+              value={zipCode}
+              onChange={handleChange}
+            />
           </div>
 
           <div>

@@ -30,7 +30,7 @@ const syncAndSeed = async () => {
     });
 
     //Generating student data
-    let students = Array(5).fill('');
+    let students = Array(30).fill('');
     students = students.map((student) => {
       return {
         firstName: faker.name.firstName(),

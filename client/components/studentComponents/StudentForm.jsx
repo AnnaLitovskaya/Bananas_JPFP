@@ -30,8 +30,10 @@ class StudentForm extends Component {
     ev.preventDefault();
     if (!this.props.match.params.studentId) {
       this.props.createStudent(this.state);
+      this.setState({ ...this.state });
     } else {
       this.props.updateStudent(this.state);
+      this.setState({ ...this.state });
     }
   }
 
@@ -57,28 +59,50 @@ class StudentForm extends Component {
         <form id="newStudentForm" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="firstName">First Name:</label>
-            <input name="firstName" value={firstName} onChange={handleChange} />
+            <input
+              required
+              name="firstName"
+              value={firstName}
+              onChange={handleChange}
+            />
             <label htmlFor="lastName">Last Name:</label>
-            <input name="lastName" value={lastName} onChange={handleChange} />
+            <input
+              required
+              name="lastName"
+              value={lastName}
+              onChange={handleChange}
+            />
           </div>
 
           <div>
             <label htmlFor="imageURL">Image URL:</label>
-            <input name="imageURL" value={imageURL} onChange={handleChange} />
+            <input
+              type="url"
+              name="imageURL"
+              value={imageURL}
+              onChange={handleChange}
+            />
           </div>
 
           <div>
             <label htmlFor="email">Email:</label>
-            <input name="email" value={email} onChange={handleChange} />
+            <input
+              required
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
             <label htmlFor="gpa">GPA:</label>
             <input
+              required
               type="number"
               name="gpa"
               value={gpa}
               onChange={handleChange}
-              min="1"
+              min="0"
               max="4"
-              step=".05"
+              step=".1"
             />
           </div>
 

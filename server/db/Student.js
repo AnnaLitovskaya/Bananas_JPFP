@@ -40,7 +40,7 @@ Student.beforeCreate( (student) => {
     433, 447, 455, 473, 497, 5, 505, 548, 550, 602, 604, 628, 633, 64, 646, 65, 656,
     660, 661, 662, 665, 669, 680, 685, 728, 768, 770, 777, 778, 783, 786, 804, 821,
     822, 823, 832, 836, 838, 839, 841, 856, 863, 874, 883, 91, 996];
-    const randomNum = Math.floor(Math.random() * peopleImageArr.length - 1);
+    const randomNum = Math.floor(Math.random() * peopleImageArr.length);
     return peopleImageArr[randomNum];
   };
   if(student.imageURL === ''){

@@ -15,55 +15,61 @@ class SingleStudent extends Component {
   }
   render() {
     const student = this.props.student;
-    return (
-      <Router>
-        <div id="singleStudent">
-          <img src={student.imageURL} width="400" height="400" />
-          <div>
-            <div>
-              <h1>
-                {student.firstName} {student.lastName}
-              </h1>
-              <h3>GPA: {student.gpa}</h3>
-              <h3>{student.email}</h3>
-            </div>
-            <div>
-              <Link to={`/students/${student.id}/edit`}>
-                <button>Edit</button>
-              </Link>
-              <button
-                onClick={() => {
-                  this.props.deleteStudent(student.id);
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-        <div>
-          {/* Campus Assignment */}
-          {student.Campus ? (
+    if (!student) {
+      return <h1 className="center">...Loading</h1>;
+    } else if (!student.firstName) {
+      return <h1 className="center">Student can't be found. ¯\_(ツ)_/¯</h1>;
+    } else {
+      return (
+        <Router>
+          <div id="singleStudent">
+            <img src={student.imageURL} width="400" height="400" />
             <div>
               <div>
-                <h3 className="center">
-                  This student is registered to a campus
-                </h3>
-                <div id="singleStudentCampus">
-                  <CampusTab tab={student.Campus} studentId={student.id} />
-                  <SelectCampus studentId={student.id} />
-                </div>
+                <h1>
+                  {student.firstName} {student.lastName}
+                </h1>
+                <h3>GPA: {student.gpa}</h3>
+                <h3>{student.email}</h3>
+              </div>
+              <div>
+                <Link to={`/students/${student.id}/edit`}>
+                  <button>Edit</button>
+                </Link>
+                <button
+                  onClick={() => {
+                    this.props.deleteStudent(student.id);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             </div>
-          ) : (
-            <div className="center">
-              <h3>The student is not registered to a campus.</h3>
-              <SelectCampus studentId={student.id} />
-            </div>
-          )}
-        </div>
-      </Router>
-    );
+          </div>
+          <div>
+            {/* Campus Assignment */}
+            {student.Campus ? (
+              <div>
+                <div>
+                  <h3 className="center">
+                    This student is registered to a campus
+                  </h3>
+                  <div id="singleStudentCampus">
+                    <CampusTab tab={student.Campus} studentId={student.id} />
+                    <SelectCampus studentId={student.id} />
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="center">
+                <h3>The student is not registered to a campus.</h3>
+                <SelectCampus studentId={student.id} />
+              </div>
+            )}
+          </div>
+        </Router>
+      );
+    }
   }
 }
 

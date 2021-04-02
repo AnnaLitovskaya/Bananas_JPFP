@@ -22,7 +22,11 @@ router.get('/:studentId', async (req, res, next) => {
         model: Campus,
       },
     });
-    res.send(student);
+    if (student) {
+      res.send(student);
+    } else {
+      res.send(`<h1>Student can't be found. ¯\\_(ツ)_/¯</h1>`);
+    }
   } catch (ex) {
     next(ex);
   }

@@ -14,4 +14,12 @@ app.get('/', (req, res, next) => {
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use('/dist', express.static(path.join(__dirname, '..', 'dist')));
 
+app.get('*', (req, res, next) => {
+  try {
+    res.send(`<h1>Page can't be found. ¯\\_(ツ)_/¯</h1>`);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 module.exports = app;

@@ -14,7 +14,9 @@ class SingleCampus extends Component {
   render() {
     const campus = this.props.campus;
     if (!campus) {
-      return <h1>...loading</h1>;
+      return <h1 className="center">...Loading</h1>;
+    } else if (!campus.name) {
+      return <h1 className="center">Campus can't be found. ¯\_(ツ)_/¯</h1>;
     } else {
       return (
         <Router>

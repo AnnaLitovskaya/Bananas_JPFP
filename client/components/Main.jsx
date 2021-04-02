@@ -31,11 +31,13 @@ class Main extends Component {
 
 const pbjtime = () => {
   return (
-    <div className="center">
-      <br />
-      <br />
-      <br />
-      <img src="https://lh4.googleusercontent.com/proxy/14o3YmaCDx4qqqnQqe2Als4DASI2ZSjUjZkgBI8Mb8QK9J2LtSMBKXfT97SwSv9MxZic_YioI4zuQ-KKupCOr5QHH7YVnQB1MkxGAnL160FIYNK_qqnY2iD5WMA=s0-d" />
+    <div className="regerts center">
+      <h1>Anna's Banana JPFP</h1>
+      <h3>(I Regret Nothing!)</h3>
+      <img
+        className="pbjTime"
+        src="https://lh4.googleusercontent.com/proxy/14o3YmaCDx4qqqnQqe2Als4DASI2ZSjUjZkgBI8Mb8QK9J2LtSMBKXfT97SwSv9MxZic_YioI4zuQ-KKupCOr5QHH7YVnQB1MkxGAnL160FIYNK_qqnY2iD5WMA=s0-d"
+      />
     </div>
   );
 };

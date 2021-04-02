@@ -2,11 +2,8 @@
 
 body {
   margin: 1rem;
-}
-
-nav {
-  display: flex;
-  justify-content: space-around;
+  background-color: #fff5c2;
+  margin: 0;
 }
 
 .center {
@@ -22,6 +19,67 @@ nav {
   margin-left: 6%;
   margin-right: 6%;
 }
+
+.regerts {
+  color: #420303;
+  text-decoration: none;
+  font-family: Marker Felt, fantasy;
+}
+
+/* ============================================================================== */
+/* NAVBAR */
+
+nav {
+  display: flex;
+  background-color: #ffea82;
+  padding: 0.2rem;
+  justify-items: stretch;
+  font-size: 2rem;
+  align-items: center;
+}
+
+nav div:nth-child(1) {
+  flex: 1 2 auto;
+}
+
+nav div:nth-child(1) a {
+  display: flex;
+  align-items: center;
+  color: #420303;
+  text-decoration: none;
+  font-family: Marker Felt, fantasy;
+}
+
+nav div:nth-child(1) a span {
+  text-decoration: none;
+  padding-left: 1rem;
+}
+
+nav div:nth-child(2),
+nav div:nth-child(3) {
+  flex: 0 1 auto;
+  margin: 1rem;
+}
+
+nav div:nth-child(2) a,
+nav div:nth-child(3) a {
+  color: #420303;
+  text-decoration: none;
+  font-family: Marker Felt, fantasy;
+}
+
+.bananaIcon img {
+  height: 50px;
+  width: 60px;
+  border-radius: 30%;
+  border: #ffd400 1px solid;
+  margin: 0.5rem;
+}
+
+.pbjTime {
+  margin-top: 3rem;
+}
+
 /* ============================================================================== */
 /* ALL CAMPUSES PAGE */
 

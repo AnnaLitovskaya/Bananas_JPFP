@@ -55,7 +55,11 @@ class StudentForm extends Component {
     const { handleChange, handleSubmit } = this;
     return (
       <Router>
-        <h1 className="center">New Student</h1>
+        {!this.props.match.params.studentId ? (
+          <h1 className="center">New Student</h1>
+        ) : (
+          <h1 className="center">Edit Student</h1>
+        )}
         <form id="newStudentForm" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="firstName">First Name:</label>

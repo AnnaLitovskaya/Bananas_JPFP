@@ -7,8 +7,9 @@ const Navbar = () => {
       <nav>
         <div className="bananaIcon">
           <Link to="/">
-            <img src="https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG-1200-80.jpg" />
-            <span>Home</span>
+            {/* <img src="https://cdn4.iconfinder.com/data/icons/education-school-1/64/letter-512.png" /> */}
+            <img src="https://img.icons8.com/dusk/452/university-campus.png" />
+            <div>Home</div>
           </Link>
         </div>
         <div>

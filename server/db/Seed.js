@@ -15,7 +15,7 @@ const syncAndSeed = async () => {
         city: faker.address.city(),
         state: faker.address.state(),
         zipCode: faker.address.zipCode().slice(0, 5),
-        description: faker.lorem.paragraphs(5),
+        description: faker.lorem.paragraphs(3),
       };
     });
     await schools.map((school) => {

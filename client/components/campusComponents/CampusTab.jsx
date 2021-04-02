@@ -26,7 +26,10 @@ class CampusTab extends Component {
             </p>
             {tab.Students ? (
               <div>
-                <p>{tab.Students.length} students</p>
+                <p>
+                  {tab.Students.length}{' '}
+                  {tab.Students.length === 1 ? 'student' : 'students'}
+                </p>
                 <div>
                   <Link to={`/campuses/${tab.id}/edit`}>
                     <button>Edit</button>

@@ -14,7 +14,7 @@ class Main extends Component {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/" component={pbjtime} exact />
+          <Route path="/" component={home} exact />
           <Route path="/campuses" component={AllCampuses} exact />
           <Route path="/campuses/addCampus" component={CampusForm} exact />
           <Route path="/campuses/:campusId" component={SingleCampus} exact />
@@ -29,14 +29,13 @@ class Main extends Component {
   }
 }
 
-const pbjtime = () => {
+const home = () => {
   return (
-    <div className="regerts center">
-      <h1>Anna's Banana JPFP</h1>
-      <h3>(I Regret Nothing!)</h3>
+    <div className="campusImg center">
+      <h1>Campus Explorer JPFP</h1>
       <img
-        className="pbjTime"
-        src="https://lh4.googleusercontent.com/proxy/14o3YmaCDx4qqqnQqe2Als4DASI2ZSjUjZkgBI8Mb8QK9J2LtSMBKXfT97SwSv9MxZic_YioI4zuQ-KKupCOr5QHH7YVnQB1MkxGAnL160FIYNK_qqnY2iD5WMA=s0-d"
+        src="https://img.money.com/2017/06/harvardrichestgrads-em-171224935.jpg?quality=60&w=1600"
+        height="500px"
       />
     </div>
   );

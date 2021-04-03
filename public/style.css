@@ -51,7 +51,6 @@ button {
 }
 
 .sort {
-  margin-left: 6%;
   margin-bottom: 1rem;
 }
 
@@ -391,4 +390,11 @@ nav div:nth-child(3) a {
   display: flex;
   height: 8rem;
   flex: 2;
+}
+
+/* =============================================================== */
+/* PAGINATE */
+
+.paginate span {
+  margin-left: 0.5rem;
 }

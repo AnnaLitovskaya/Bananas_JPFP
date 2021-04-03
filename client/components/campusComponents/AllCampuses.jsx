@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getCampuses } from '../../store/storeComponents/campusStoreComponents/getCampuses';
 import CampusTab from './CampusTab.jsx';
 import { orderBy, filter } from 'lodash';
+import Paginate from '../Paginate.jsx';
 
 class AllCampuses extends Component {
   constructor(props) {
@@ -10,12 +11,13 @@ class AllCampuses extends Component {
     this.state = {
       campuses: props.campuses,
       filtered: false,
+      pages: 0,
     };
     this.addCampus = this.addCampus.bind(this);
     this.onSelect = this.onSelect.bind(this);
   }
-  componentDidMount() {
-    this.props.getCampuses();
+  async componentDidMount() {
+    await this.props.getCampuses();
   }
 
   addCampus() {
@@ -46,6 +48,23 @@ class AllCampuses extends Component {
     this.setState({ campuses, filtered });
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      this.state.campuses.length !== this.props.campuses.length &&
+      this.state.filtered === false
+    ) {
+      this.setState({ ...this.state, campuses: this.props.campuses });
+    } else if (
+      this.state.filtered === true &&
+      this.props.campuses.length !== prevProps.campuses.length
+    ) {
+      let campuses = filter(this.props.campuses, function (campus) {
+        return campus.Students.length === 0;
+      });
+      this.setState({ ...this.state, campuses });
+    }
+  }
+
   render() {
     const campuses =
       this.state.campuses.length || this.state.filtered === true
@@ -66,18 +85,21 @@ class AllCampuses extends Component {
             <h1>All Campuses</h1>
             <button onClick={this.addCampus}>Add Campus</button>
           </div>
-          <div className="sort">
-            <label htmlFor="campusSort">Display: </label>
-            <select name="campusSort" onChange={this.onSelect}>
-              <option value={''}>{'--Display Selection--'}</option>
-              <option value={'numStudents'}>
-                {'Sort By Number Of Students'}
-              </option>
-              <option value={'name'}>{'Sort By Campus name'}</option>
-              <option value={'unregistered'}>
-                {'Campuses With No Students'}
-              </option>
-            </select>
+          <div className="listHeader">
+            <div className="sort">
+              <label htmlFor="campusSort">Display: </label>
+              <select name="campusSort" onChange={this.onSelect}>
+                <option value={''}>{'--Display Selection--'}</option>
+                <option value={'numStudents'}>
+                  {'Sort By Number Of Students'}
+                </option>
+                <option value={'name'}>{'Sort By Campus name'}</option>
+                <option value={'unregistered'}>
+                  {'Campuses With No Students'}
+                </option>
+              </select>
+            </div>
+            {/* <Paginate page={'campus'} value={campuses.length} /> */}
           </div>
           <div id="campusListing">
             {campuses.map((campus) => {

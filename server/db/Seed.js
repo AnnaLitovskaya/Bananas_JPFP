@@ -7,7 +7,7 @@ const syncAndSeed = async () => {
     await db.sync({ force: true });
 
     // Generating school data
-    let schools = Array(6).fill('');
+    let schools = Array(25).fill('');
     schools = schools.map((spot) => {
       return {
         name: `${faker.address.city()} University`,
@@ -30,7 +30,7 @@ const syncAndSeed = async () => {
     });
 
     //Generating student data
-    let students = Array(30).fill('');
+    let students = Array(75).fill('');
     students = students.map((student) => {
       return {
         firstName: faker.name.firstName(),

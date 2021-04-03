@@ -35,6 +35,21 @@ class AllStudents extends Component {
     this.setState({ students, filtered });
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      this.state.students.length !== this.props.students.length &&
+      this.state.filtered === false
+    ) {
+      this.setState({ ...this.state, students: this.props.students });
+    } else if (
+      this.state.filtered === true &&
+      this.props.students.length !== prevProps.students.length
+    ) {
+      let students = filter(this.props.students, ['CampusId', null]);
+      this.setState({ ...this.state, students });
+    }
+  }
+
   render() {
     const students =
       this.state.students.length || this.state.filtered === true

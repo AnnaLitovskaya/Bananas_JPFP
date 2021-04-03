@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { getCampuses } from '../../store/storeComponents/campusStoreComponents/getCampuses';
 import { connect } from 'react-redux';
 import { changeStudentCampus } from '../../store/storeComponents/studentStoreComponents/changeStudentCampus';
-import { singleStudent } from '../../store/storeComponents/studentStoreComponents/singleStudent';
 import { singleCampus } from '../../store/storeComponents/campusStoreComponents/singleCampus';
 import { withRouter } from 'react-router-dom';
 
@@ -14,9 +13,6 @@ class SelectCampus extends Component {
   }
   componentDidMount() {
     this.props.getCampuses();
-    if (this.props.studentId) {
-      this.props.singleStudent(this.props.studentId);
-    }
   }
 
   onSelect(ev) {
@@ -50,10 +46,9 @@ class SelectCampus extends Component {
   }
 }
 
-const mapStateToProps = ({ campuses, student, campus }) => {
+const mapStateToProps = ({ campuses, campus }) => {
   return {
     campuses,
-    student,
     campus,
   };
 };
@@ -62,9 +57,6 @@ const mapDispatchToProps = (dispatch, { history }) => {
   return {
     getCampuses: () => {
       dispatch(getCampuses());
-    },
-    singleStudent: (studentId) => {
-      dispatch(singleStudent(studentId));
     },
     singleCampus: (campusId) => {
       dispatch(singleCampus(campusId));

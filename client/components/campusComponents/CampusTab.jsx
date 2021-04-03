@@ -3,14 +3,8 @@ import { withRouter, HashRouter as Router, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deleteCampus } from '../../store/storeComponents/campusStoreComponents/deleteCampus';
 import { changeStudentCampus } from '../../store/storeComponents/studentStoreComponents/changeStudentCampus';
-import { singleStudent } from '../../store/storeComponents/studentStoreComponents/singleStudent';
 
 class CampusTab extends Component {
-  componentDidMount() {
-    if (this.props.studentId) {
-      this.props.singleStudent(this.props.studentId);
-    }
-  }
   render() {
     const unregisterCampus = { id: '' };
     const tab = this.props.tab;
@@ -78,9 +72,6 @@ const mapDispatchToProps = (dispatch, { history }) => {
     },
     changeStudentCampus: (student, campus) => {
       dispatch(changeStudentCampus(student, campus, history));
-    },
-    singleStudent: (studentId) => {
-      dispatch(singleStudent(studentId));
     },
   };
 };

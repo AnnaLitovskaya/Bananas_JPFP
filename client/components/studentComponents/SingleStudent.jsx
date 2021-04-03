@@ -8,10 +8,8 @@ import SelectCampus from '../campusComponents/SelectCampus.jsx';
 
 class SingleStudent extends Component {
   componentDidMount() {
-    if (!this.props.student.id) {
-      const studentId = this.props.match.params.studentId * 1;
-      this.props.singleStudent(studentId);
-    }
+    const studentId = this.props.match.params.studentId * 1;
+    this.props.singleStudent(studentId);
   }
   render() {
     const student = this.props.student;
@@ -55,15 +53,15 @@ class SingleStudent extends Component {
                     This student is registered to a campus
                   </h3>
                   <div id="singleStudentCampus">
-                    <CampusTab tab={student.Campus} studentId={student.id} />
-                    <SelectCampus studentId={student.id} />
+                    <CampusTab tab={student.Campus} student={student} />
+                    <SelectCampus student={student} />
                   </div>
                 </div>
               </div>
             ) : (
               <div className="center">
                 <h3>The student is not registered to a campus.</h3>
-                <SelectCampus studentId={student.id} />
+                <SelectCampus student={student} />
               </div>
             )}
           </div>

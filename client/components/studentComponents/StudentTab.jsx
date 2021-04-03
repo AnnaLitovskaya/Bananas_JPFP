@@ -21,9 +21,12 @@ const StudentTab = (props) => {
             />
           </Link>
           <Link to={`/students/${student.id}`}>
-            <p>
-              {student.firstName} {student.lastName}
-            </p>
+            <div>
+              <h2>
+                {student.firstName} {student.lastName}
+              </h2>
+              <h5>GPA: {student.gpa}</h5>
+            </div>
           </Link>
           {student.Campus ? (
             <Link to={`/campuses/${student.Campus.id}`}>

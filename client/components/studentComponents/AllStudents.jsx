@@ -9,6 +9,7 @@ class AllStudents extends Component {
     super(props);
     this.state = {
       students: props.students,
+      filtered: false,
     };
     this.addStudent = this.addStudent.bind(this);
     this.onSelect = this.onSelect.bind(this);
@@ -23,19 +24,23 @@ class AllStudents extends Component {
 
   onSelect(ev) {
     let students;
+    let filtered;
     if (ev.target.value === 'unregistered') {
       students = filter(this.props.students, ['CampusId', null]);
+      filtered = true;
     } else {
       students = orderBy(this.props.students, [ev.target.value], ['asc']);
+      filtered = false;
     }
-    this.setState({ students });
+    this.setState({ students, filtered });
   }
 
   render() {
-    const students = this.state.students.length
-      ? this.state.students
-      : this.props.students;
-    if (students.length === 0) {
+    const students =
+      this.state.students.length || this.state.filtered === true
+        ? this.state.students
+        : this.props.students;
+    if (this.state.students.length === 0 && this.state.filtered === false) {
       return (
         <div className="center">
           <h1>All Students</h1>

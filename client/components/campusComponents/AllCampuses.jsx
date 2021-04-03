@@ -9,6 +9,7 @@ class AllCampuses extends Component {
     super(props);
     this.state = {
       campuses: props.campuses,
+      filtered: false,
     };
     this.addCampus = this.addCampus.bind(this);
     this.onSelect = this.onSelect.bind(this);
@@ -23,6 +24,7 @@ class AllCampuses extends Component {
 
   onSelect(ev) {
     let campuses;
+    let filtered;
     if (ev.target.value === 'numStudents') {
       campuses = orderBy(
         this.props.campuses,
@@ -31,22 +33,25 @@ class AllCampuses extends Component {
         },
         ['asc']
       );
+      filtered = false;
     } else if (ev.target.value === 'unregistered') {
-      console.log(this.props.campuses);
       campuses = filter(this.props.campuses, function (campus) {
         return campus.Students.length === 0;
       });
+      filtered = true;
     } else {
       campuses = orderBy(this.props.campuses, [ev.target.value], ['asc']);
+      filtered = false;
     }
-    this.setState({ campuses });
+    this.setState({ campuses, filtered });
   }
 
   render() {
-    const campuses = this.state.campuses.length
-      ? this.state.campuses
-      : this.props.campuses;
-    if (campuses.length === 0) {
+    const campuses =
+      this.state.campuses.length || this.state.filtered === true
+        ? this.state.campuses
+        : this.props.campuses;
+    if (campuses.length === 0 && this.state.filtered === false) {
       return (
         <div className="center">
           <h1>All Campuses</h1>
@@ -62,7 +67,7 @@ class AllCampuses extends Component {
             <button onClick={this.addCampus}>Add Campus</button>
           </div>
           <div className="sort">
-            <label htmlFor="campusSort">Sort Campus By: </label>
+            <label htmlFor="campusSort">Display: </label>
             <select name="campusSort" onChange={this.onSelect}>
               <option value={''}>{'--Display Selection--'}</option>
               <option value={'numStudents'}>

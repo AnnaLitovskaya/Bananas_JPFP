@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getStudents } from '../../store/storeComponents/studentStoreComponents/getStudents';
 import StudentTab from './StudentTab.jsx';
-import { orderBy } from 'lodash';
+import { orderBy, filter } from 'lodash';
 
 class AllStudents extends Component {
   constructor(props) {
@@ -22,7 +22,12 @@ class AllStudents extends Component {
   }
 
   onSelect(ev) {
-    const students = orderBy(this.props.students, [ev.target.value], ['asc']);
+    let students;
+    if (ev.target.value === 'unregistered') {
+      students = filter(this.props.students, ['CampusId', null]);
+    } else {
+      students = orderBy(this.props.students, [ev.target.value], ['asc']);
+    }
     this.setState({ students });
   }
 
@@ -45,14 +50,15 @@ class AllStudents extends Component {
             <h1>All Students</h1>
             <button onClick={this.addStudent}>Add Student</button>
           </div>
-          <div>
-            <label className="sort" htmlFor="studentSort">
-              Sort Students By:{' '}
-            </label>
+          <div className="sort">
+            <label htmlFor="studentSort">Display: </label>
             <select name="studentSort" onChange={this.onSelect}>
-              <option value={''}>{'--Sort Selection--'}</option>
-              <option value={'lastName'}>{'Last Name'}</option>
-              <option value={'gpa'}>{'GPA'}</option>
+              <option value={''}>{'--Display Selection--'}</option>
+              <option value={'lastName'}>{'Sort By Last Name'}</option>
+              <option value={'gpa'}>{'Sort By GPA'}</option>
+              <option value={'unregistered'}>
+                {'Only Unregistered Students'}
+              </option>
             </select>
           </div>
           <div id="studentListing">

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCampuses } from '../../store/storeComponents/campusStoreComponents/getCampuses';
 import CampusTab from './CampusTab.jsx';
-import { orderBy } from 'lodash';
+import { orderBy, filter } from 'lodash';
 
 class AllCampuses extends Component {
   constructor(props) {
@@ -31,6 +31,11 @@ class AllCampuses extends Component {
         },
         ['asc']
       );
+    } else if (ev.target.value === 'unregistered') {
+      console.log(this.props.campuses);
+      campuses = filter(this.props.campuses, function (campus) {
+        return campus.Students.length === 0;
+      });
     } else {
       campuses = orderBy(this.props.campuses, [ev.target.value], ['asc']);
     }
@@ -56,14 +61,17 @@ class AllCampuses extends Component {
             <h1>All Campuses</h1>
             <button onClick={this.addCampus}>Add Campus</button>
           </div>
-          <div>
-            <label className="sort" htmlFor="campusSort">
-              Sort Campus By:{' '}
-            </label>
+          <div className="sort">
+            <label htmlFor="campusSort">Sort Campus By: </label>
             <select name="campusSort" onChange={this.onSelect}>
-              <option value={''}>{'--Sort Selection--'}</option>
-              <option value={'numStudents'}>{'# Of Students'}</option>
-              <option value={'name'}>{'Campus name'}</option>
+              <option value={''}>{'--Display Selection--'}</option>
+              <option value={'numStudents'}>
+                {'Sort By Number Of Students'}
+              </option>
+              <option value={'name'}>{'Sort By Campus name'}</option>
+              <option value={'unregistered'}>
+                {'Campuses With No Students'}
+              </option>
             </select>
           </div>
           <div id="campusListing">

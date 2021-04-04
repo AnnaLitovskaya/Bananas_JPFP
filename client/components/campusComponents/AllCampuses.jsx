@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getCampuses } from '../../store/storeComponents/campusStoreComponents/getCampuses';
 import CampusTab from './CampusTab.jsx';
 import { orderBy, filter } from 'lodash';
-import Paginate from '../Paginate.jsx';
+// import Paginate from '../Paginate.jsx';
 
 class AllCampuses extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class AllCampuses extends Component {
     this.state = {
       campuses: props.campuses,
       filtered: false,
-      pages: 0,
+      sort: '',
     };
     this.addCampus = this.addCampus.bind(this);
     this.onSelect = this.onSelect.bind(this);
@@ -27,6 +27,7 @@ class AllCampuses extends Component {
   onSelect(ev) {
     let campuses;
     let filtered;
+    let sort;
     if (ev.target.value === 'numStudents') {
       campuses = orderBy(
         this.props.campuses,
@@ -36,6 +37,7 @@ class AllCampuses extends Component {
         ['asc']
       );
       filtered = false;
+      sort = 'numStudents';
     } else if (ev.target.value === 'unregistered') {
       campuses = filter(this.props.campuses, function (campus) {
         return campus.Students.length === 0;
@@ -44,16 +46,30 @@ class AllCampuses extends Component {
     } else {
       campuses = orderBy(this.props.campuses, [ev.target.value], ['asc']);
       filtered = false;
+      sort = 'name';
     }
-    this.setState({ campuses, filtered });
+    this.setState({ campuses, filtered, sort });
   }
 
   componentDidUpdate(prevProps) {
     if (
       this.state.campuses.length !== this.props.campuses.length &&
-      this.state.filtered === false
+      this.state.filtered === false &&
+      this.state.campuses.length !== 0
     ) {
-      this.setState({ ...this.state, campuses: this.props.campuses });
+      let campuses;
+      if (this.state.sort === 'numStudents') {
+        campuses = orderBy(
+          this.props.campuses,
+          function (campus) {
+            return campus.Students.length;
+          },
+          ['asc']
+        );
+      } else {
+        campuses = orderBy(this.props.campuses, ['name'], ['asc']);
+      }
+      this.setState({ ...this.state, campuses });
     } else if (
       this.state.filtered === true &&
       this.props.campuses.length !== prevProps.campuses.length

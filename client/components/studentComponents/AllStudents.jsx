@@ -70,17 +70,20 @@ class AllStudents extends Component {
             <h1>All Students</h1>
             <button onClick={this.addStudent}>Add Student</button>
           </div>
-          <div className="sort">
-            <label htmlFor="studentSort">Display: </label>
-            <select name="studentSort" onChange={this.onSelect}>
-              <option value={''}>{'--Display Selection--'}</option>
-              <option value={'lastName'}>{'Sort By Last Name'}</option>
-              <option value={'gpa'}>{'Sort By GPA'}</option>
-              <option value={'unregistered'}>
-                {'Only Unregistered Students'}
-              </option>
-            </select>
+          <div className="listHeader">
+            <div className="sort">
+              <label htmlFor="studentSort">Display: </label>
+              <select name="studentSort" onChange={this.onSelect}>
+                <option value={''}>{'--Display Selection--'}</option>
+                <option value={'lastName'}>{'Sort By Last Name'}</option>
+                <option value={'gpa'}>{'Sort By GPA'}</option>
+                <option value={'unregistered'}>
+                  {'Only Unregistered Students'}
+                </option>
+              </select>
+            </div>
           </div>
+
           <div id="studentListing">
             {students.map((student) => {
               return (

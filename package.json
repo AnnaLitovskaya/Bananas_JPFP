@@ -2,7 +2,7 @@
   "name": "bananas-jpfp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/port.js",
   "scripts": {
     "start": "node server/port.js",
     "start:dev": "npm run build:dev & nodemon server/port.js --ignore dist/ --client/",

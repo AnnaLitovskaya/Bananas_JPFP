@@ -1,6 +1,4 @@
-// const { Student, Campus } = require('./associations.js');
-const Student = require('./student.js');
-const Campus = require('./campus.js');
+const { Student, Campus } = require('./associations.js');
 const db = require('./db.js');
 const faker = require('faker');
 

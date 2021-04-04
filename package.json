@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node port.js",
+    "start": "node server/port.js",
     "start:dev": "npm run build:dev & nodemon server/port.js --ignore dist/ --client/",
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development"

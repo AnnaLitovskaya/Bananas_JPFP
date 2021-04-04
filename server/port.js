@@ -1,6 +1,6 @@
-const app = require('./server');
-const db = require('./db/db');
-const syncAndSeed = require('./db/seed');
+const app = require('./server.js');
+const db = require('./db/db.js');
+const syncAndSeed = require('./db/seed.js');
 
 const run = async () => {
   try {

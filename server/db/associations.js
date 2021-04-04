@@ -1,5 +1,5 @@
-const Student = require('./student');
-const Campus = require('./campus');
+const Student = require('./student.js');
+const Campus = require('./campus.js');
 
 Student.belongsTo(Campus);
 Campus.hasMany(Student);

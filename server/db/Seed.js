@@ -1,5 +1,5 @@
-const { Student, Campus } = require('./associations');
-const db = require('./db');
+const { Student, Campus } = require('./associations.js');
+const db = require('./db.js');
 const faker = require('faker');
 
 const syncAndSeed = async () => {

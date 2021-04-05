@@ -6,7 +6,6 @@ import CampusForm from './campusComponents/CampusForm.jsx';
 import AllStudents from './studentComponents/AllStudents.jsx';
 import SingleStudent from './studentComponents/SingleStudent.jsx';
 import StudentForm from './studentComponents/StudentForm.jsx';
-import Oops from './Oops.jsx';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 class Main extends Component {
@@ -15,7 +14,7 @@ class Main extends Component {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/" component={home} exact />
+          <Route path="/" component={Home} exact />
           <Route path="/campuses" component={AllCampuses} exact />
           <Route path="/campuses/addCampus" component={CampusForm} exact />
           <Route path="/campuses/:campusId" component={SingleCampus} exact />
@@ -31,7 +30,7 @@ class Main extends Component {
   }
 }
 
-const home = () => {
+const Home = () => {
   return (
     <div className="campusImg center">
       <h1>Campus Explorer JPFP</h1>
@@ -41,6 +40,10 @@ const home = () => {
       />
     </div>
   );
+};
+
+const Oops = () => {
+  return <h1 className="center">Page can't be found. ¯\_(ツ)_/¯</h1>;
 };
 
 export default Main;

@@ -6,6 +6,7 @@ import CampusForm from './campusComponents/CampusForm.jsx';
 import AllStudents from './studentComponents/AllStudents.jsx';
 import SingleStudent from './studentComponents/SingleStudent.jsx';
 import StudentForm from './studentComponents/StudentForm.jsx';
+import Oops from './Oops.jsx';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 class Main extends Component {
@@ -23,6 +24,7 @@ class Main extends Component {
           <Route path="/students/addStudent" component={StudentForm} exact />
           <Route path="/students/:studentId" component={SingleStudent} exact />
           <Route path="/students/:studentId/edit" component={StudentForm} />
+          <Route path="*" component={Oops} />
         </Switch>
       </Router>
     );

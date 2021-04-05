@@ -63,7 +63,7 @@ Campus.beforeCreate( (campus) => {
   if(campus.imageURL === ''){
     campus.imageURL = 'https://picsum.photos/id/101/400'
   }
-  if(campus.imageURL === 'https://picsum.photos/id/101/400' || campus.imageURL){
+  if(campus.imageURL === 'https://picsum.photos/id/101/400'){
     campus.imageURL = campus.imageURL.slice(0, 25) + randomImage() + '/200'
   }
 });
